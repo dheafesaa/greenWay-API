@@ -4,6 +4,7 @@ import { initializeFirebaseAdmin } from "./config/firebase-admin.mjs";
 import { register } from "./controllers/authentication/register.mjs";
 import { login } from "./controllers/authentication/login.mjs";
 import { logout } from "./controllers/authentication/logout.mjs";
+import { allArticle } from "./controllers/article/list.mjs";
 
 const app = express();
 app.use(json());
@@ -22,6 +23,9 @@ initializeFirebaseAdmin();
 app.post("/register", register)
 app.post("/login", login)
 app.post('/logout', logout);
+
+// Define routes for articles
+app.post("/article", allArticle)
 
 // Start server
 const PORT = 3000;
