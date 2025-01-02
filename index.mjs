@@ -4,6 +4,7 @@ import { initializeFirebaseAdmin } from "./config/firebase-admin.mjs";
 import { register } from "./controllers/authentication/register.mjs";
 import { login } from "./controllers/authentication/login.mjs";
 import { logout } from "./controllers/authentication/logout.mjs";
+import { authMiddleware } from "./middleware/auth-middleware.mjs";
 import { allArticle } from "./controllers/article/list.mjs";
 import { addArticle } from "./controllers/article/add.mjs";
 import { deleteArticle } from "./controllers/article/delete.mjs";
@@ -29,9 +30,9 @@ app.post("/logout", logout);
 
 // Define routes for articles
 app.get("/article", allArticle)
-app.post("/article", addArticle);
-app.delete("/article", deleteArticle)
-app.put("/article", editArticle)
+app.post("/article", authMiddleware,addArticle);
+app.delete("/article", authMiddleware, deleteArticle)
+app.put("/article", authMiddleware, editArticle)
 
 // Start server
 const PORT = 3000;
