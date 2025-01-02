@@ -7,6 +7,7 @@ import { logout } from "./controllers/authentication/logout.mjs";
 import { allArticle } from "./controllers/article/list.mjs";
 import { addArticle } from "./controllers/article/add.mjs";
 import { deleteArticle } from "./controllers/article/delete.mjs";
+import { editArticle } from "./controllers/article/edit.mjs";
 
 const app = express();
 app.use(json());
@@ -30,6 +31,7 @@ app.post("/logout", logout);
 app.get("/article", allArticle)
 app.post("/article", addArticle);
 app.delete("/article", deleteArticle)
+app.put("/article", editArticle)
 
 // Start server
 const PORT = 3000;
