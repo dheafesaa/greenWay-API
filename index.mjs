@@ -6,6 +6,7 @@ import { login } from "./controllers/authentication/login.mjs";
 import { logout } from "./controllers/authentication/logout.mjs";
 import { allArticle } from "./controllers/article/list.mjs";
 import { addArticle } from "./controllers/article/add.mjs";
+import { deleteArticle } from "./controllers/article/delete.mjs";
 
 const app = express();
 app.use(json());
@@ -27,7 +28,8 @@ app.post("/logout", logout);
 
 // Define routes for articles
 app.get("/article", allArticle)
-app.post("/article", authenticateAdmin, addArticle);
+app.post("/article", addArticle);
+app.delete("/article", deleteArticle)
 
 // Start server
 const PORT = 3000;
