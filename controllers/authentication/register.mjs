@@ -4,7 +4,7 @@ import { auth, db } from "../../config/firebase-app.mjs";
 
 export const register = async (req, res) => {
     const { name, email, password } = req.body;
-    const formattedName = name.replace(/\s+/g, '+');
+    const formattedName = name?.replace(/\s+/g, '+');
     const photoURL = `https://ui-avatars.com/api/?name=${formattedName}&background=random`;
 
     if (!name || !email || !password) {
