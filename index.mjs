@@ -32,11 +32,14 @@ app.post("/logout", logout);
 // Define routes for articles
 app.get("/articles", allArticle)
 app.post("/article", authMiddleware,addArticle);
-app.delete("/article", authMiddleware, deleteArticle)
-app.put("/article", authMiddleware, editArticle)
+app.delete("/article/:id", authMiddleware, deleteArticle)
+app.put("/article/:id", authMiddleware, editArticle)
 
 // Define routes for articles
 app.get("/reviews", allReview)
+app.post("/review", authMiddleware,addArticle);
+app.delete("/review/:id", authMiddleware, deleteArticle)
+app.put("/review/:id", authMiddleware, editArticle)
 
 // Start server
 const PORT = 3000;
