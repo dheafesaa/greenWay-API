@@ -9,6 +9,7 @@ import { allArticle } from "./controllers/article/list.mjs";
 import { addArticle } from "./controllers/article/add.mjs";
 import { deleteArticle } from "./controllers/article/delete.mjs";
 import { editArticle } from "./controllers/article/edit.mjs";
+import { allReview } from "./controllers/review/list.mjs";
 
 const app = express();
 app.use(json());
@@ -29,10 +30,13 @@ app.post("/login", login)
 app.post("/logout", logout);
 
 // Define routes for articles
-app.get("/article", allArticle)
+app.get("/articles", allArticle)
 app.post("/article", authMiddleware,addArticle);
 app.delete("/article", authMiddleware, deleteArticle)
 app.put("/article", authMiddleware, editArticle)
+
+// Define routes for articles
+app.get("/reviews", allReview)
 
 // Start server
 const PORT = 3000;
